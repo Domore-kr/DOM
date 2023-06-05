@@ -1,13 +1,15 @@
-const reveal = document.querySelector('.reveal')
+const reveals = Array.from(document.querySelectorAll('.reveal'))
 
 function isVisible(el) {
-    const { bottom, top } = reveal.getBoundingClientRect()
-
-    if (bottom < 0 || top < window.innerHeight) {
-        el.classList.add('reveal_active')
-    }
+    el.forEach((e) => {
+        const { bottom, top } = e.getBoundingClientRect()
+        if (bottom < 0 || top < window.innerHeight) {
+            e.classList.add('reveal_active')
+        }
+    });
 }
 
+
 setInterval(() => {
-    isVisible(reveal)
+    isVisible(reveals)
 }, 1000)
